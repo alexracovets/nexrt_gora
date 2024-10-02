@@ -1,9 +1,8 @@
 'use client';
 
-import React from 'react';
-import { cn } from '@/lib/utils';
 import { Container } from './container';
 import Link from 'next/link';
+import React from 'react';
 
 export const Header: React.FC = ({ }) => {
 
@@ -27,8 +26,8 @@ export const Header: React.FC = ({ }) => {
     ]
 
     return (
-        <header className={cn()}>
-            <Container className='flex'>
+        <header>
+            <Container className='flex h-[10dvh]'>
                 <ul className='flex'>
                     {linkList.map((link, index) =>
                         <li key={index} className='mx-2'><Link href={link.href} className='uppercase text-4xl p-3 font-[700]'>{link.name}</Link></li>

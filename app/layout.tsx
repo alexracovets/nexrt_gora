@@ -35,6 +35,7 @@ export const metadata: Metadata = {
 };
 
 import "./globals.css";
+import { Footer } from '@/components/shared/footer';
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -54,6 +55,7 @@ export default function RootLayout({
         <main className='grow w-full flex justify-center flex-col'>
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );
