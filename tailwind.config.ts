@@ -14,7 +14,8 @@ const config: Config = {
 				'regal-yellow': '#FFEB3B',
 				'regal-pink': '#E91E63',
 				'regal-violet': '#9C27B0',
-				'regal-white': '#F8F8FF'
+				'regal-white': '#F8F8FF',
+				'regal-black': '#000'
 			},
 		}
 	},

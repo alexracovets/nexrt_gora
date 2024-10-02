@@ -14,7 +14,7 @@ interface Grid {
 const GridItem = memo(({ height, width, grid }: { height: string, width: string, grid: Grid }) => {
     const setActiveGrids = useStoreGrid(state => state.setActiveGrids);
     const isGridActive = useStoreGrid(useCallback(
-        (state) => state.activeGrids.some((activeGrid) => activeGrid.x === grid.x && activeGrid.y === grid.y),
+        (state) => state.activeGrids.some((activeGrid: Grid) => activeGrid.x === grid.x && activeGrid.y === grid.y),
         [grid.x, grid.y]
     ));
     const [color, setColor] = useState('bg-regal-green');
