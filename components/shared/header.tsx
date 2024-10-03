@@ -13,15 +13,15 @@ export const Header: React.FC = ({ }) => {
         },
         {
             name: 'Про проект',
-            href: '/about'
+            href: '/project'
         },
         {
             name: 'Подарунки',
-            href: '/'
+            href: '/gifts'
         },
         {
             name: 'О нас',
-            href: '/'
+            href: '/about'
         }
     ]
 

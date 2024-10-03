@@ -28,6 +28,7 @@ html {
   background-color: var(--color-bg);
   overflow-x: hidden;
   font-size: calc(100vw / 1920 *10);
+  line-height: 1.1;
   height: 100%;
 }
 

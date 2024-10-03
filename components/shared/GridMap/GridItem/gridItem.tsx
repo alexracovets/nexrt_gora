@@ -1,11 +1,11 @@
 'use client';
 import { memo, useCallback, useEffect, useState } from 'react';
-import useStoreGrid from "../../../../store/useStoreGrid";
+import useStoreGrid from '@/store/useStoreGrid';
 
 interface Grid {
     x: number;
     y: number;
-    section: number;
+    price: number;
     isSelected: boolean;
     isAvailable: boolean;
 }
@@ -21,17 +21,17 @@ const GridItem = memo(({ height, width, grid }: { height: string, width: string,
 
     useEffect(() => {
         setOpacity(isGridActive ? 'opacity-100' : 'opacity-50');
-        switch (grid.section) {
-            case 0:
+        switch (grid.price) {
+            case 100:
                 setColor('bg-regal-green');
                 break;
-            case 1:
+            case 200:
                 setColor('bg-regal-yellow');
                 break;
-            case 2:
+            case 300:
                 setColor('bg-regal-pink');
                 break;
-            case 3:
+            case 500:
                 setColor('bg-regal-violet');
                 break;
             default:
@@ -45,7 +45,7 @@ const GridItem = memo(({ height, width, grid }: { height: string, width: string,
             style={{ height, width }}
             onClick={() => setActiveGrids(grid)}
         >
-            <div className={`w-full h-full ${color} ${opacity} outline outline-black outline-[0.1rem] rounded-[0.4rem] transition-all duration-300 ease-in`} />
+            <div className={`w-full h-full ${color} ${opacity} outline outline-black outline-[0.1rem] rounded-[0.4rem]`} />
         </li>
     );
 });
