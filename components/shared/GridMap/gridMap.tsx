@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
-import GridItem from './GridItem/gridItem';
+import GridItem from './GridItem/gridItem'; 
 
 export const GridMap: React.FC = ({ }) => {
     const [cells, setCells] = useState([]);
@@ -30,7 +30,7 @@ export const GridMap: React.FC = ({ }) => {
             <div className='py-[1rem] pr-[1rem] pl-[0.5rem] bg-regal-green rounded-r-lg'>
                 <div className='flex relative w-[98rem] h-[74.5rem] rounded-r-lg'>
                     <div className='absolute left-0 top-0 z-10 w-[100%] h-[100%] pointer-events-none'>
-                        <Image src="/mask/mask.png"
+                        <Image src="./mask/mask.png"
                             fill={true}
                             alt="mask"
                             sizes="(max-width: 768px) 100vw, 
