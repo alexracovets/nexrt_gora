@@ -34,7 +34,7 @@ export const AsideHome: React.FC = ({ }) => {
     }, [activeGrids]);
 
     return (
-        <div defaultValue="account" className="h-[100%] max-h-[100%] w-[15rem] grow bg-white rounded-l-lg text-regal-black py-[4rem] px-[2rem]">
+        <div defaultValue="account" className="h-[100%] max-h-[85dvh] overflow-y-auto w-[15rem] grow bg-white rounded-l-lg text-regal-black py-[4rem] px-[2rem]">
             <div className="text-center uppercase text-[3rem] font-[700] font-spectral mb-[2rem]">
                 Залучитися до проекту
             </div>
