@@ -50,7 +50,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="./favicon.ico" sizes="any" />
       </head>
-      <body className='w-full flex flex-col justify-center'>
+      <body className='w-full flex flex-col justify-start'>
         <Header />
         <main className='grow w-full flex justify-center flex-col'>
           {children}

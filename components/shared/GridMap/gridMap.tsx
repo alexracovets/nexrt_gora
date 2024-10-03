@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import GridItem from './GridItem/gridItem';
-
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 export const GridMap: React.FC = ({ }) => {
     const [cells, setCells] = useState([]);
     const vertical = 35;
@@ -26,29 +26,35 @@ export const GridMap: React.FC = ({ }) => {
     }, []);
 
     return (
-        <div className='flex relative w-[98rem] h-[74.5rem] bg-regal-white'>
-            <div className='absolute left-0 top-0 z-10 w-[100%] h-[100%] pointer-events-none'>
-                <Image src="/mask/mask.png"
-                    fill={true}
-                    alt="mask"
-                    sizes="(max-width: 768px) 100vw, 
+        <div className='flex justify-center item-center grow h-[100%]'>
+            <TransformWrapper>
+                <TransformComponent>
+                    <div className='flex relative w-[98rem] h-[74.5rem]'>
+                        <div className='absolute left-0 top-0 z-10 w-[100%] h-[100%] pointer-events-none'>
+                            <Image src="/mask/mask.png"
+                                fill={true}
+                                alt="mask"
+                                sizes="(max-width: 768px) 100vw, 
                     (max-width: 1200px) 50vw, 
                     33vw"
-                    priority={true}
-                />
-            </div>
-            <ul className='grow flex flex-wrap'>
-                {cells.map((grid, idx) => {
-                    return (
-                        <GridItem
-                            key={idx}
-                            width={`${100 / horisont}%`}
-                            height={`${100 / vertical}%`}
-                            grid={grid}
-                        />
-                    )
-                })}
-            </ul>
+                                priority={true}
+                            />
+                        </div>
+                        {cells && <ul className={`flex flex-wrap bg-regal-white`}>
+                            {cells.map((grid, idx) => {
+                                return (
+                                    <GridItem
+                                        key={idx}
+                                        width={`${100 / horisont}%`}
+                                        height={`${100 / vertical}%`}
+                                        grid={grid}
+                                    />
+                                )
+                            })}
+                        </ul>} 
+                    </div>
+                </TransformComponent>
+            </TransformWrapper>
         </div>
     );
 };
