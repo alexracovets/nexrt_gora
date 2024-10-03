@@ -2,7 +2,6 @@
 import { memo, useCallback, useEffect, useState } from 'react';
 import useStoreGrid from "../../../../store/useStoreGrid";
 
-// Інтерфейс для визначення типу Grid
 interface Grid {
     x: number;
     y: number;
@@ -19,9 +18,9 @@ const GridItem = memo(({ height, width, grid }: { height: string, width: string,
     ));
     const [color, setColor] = useState('bg-regal-green');
     const [opacity, setOpacity] = useState('opacity-60');
-    
+
     useEffect(() => {
-        setOpacity(isGridActive ? 'opacity-100' : 'opacity-60');
+        setOpacity(isGridActive ? 'opacity-100' : 'opacity-50');
         switch (grid.section) {
             case 0:
                 setColor('bg-regal-green');
@@ -42,10 +41,11 @@ const GridItem = memo(({ height, width, grid }: { height: string, width: string,
 
     return (
         <li
-            className={`${color} ${opacity} border-black border-[1px] rounded-sm`}
+            className={`bg-regal-white block cursor-pointer`}
             style={{ height, width }}
             onClick={() => setActiveGrids(grid)}
         >
+            <div className={`w-full h-full ${color} ${opacity} outline outline-black outline-[0.1rem] rounded-[0.4rem] transition-all duration-300 ease-in`} />
         </li>
     );
 });

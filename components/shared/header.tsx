@@ -27,10 +27,10 @@ export const Header: React.FC = ({ }) => {
 
     return (
         <header>
-            <Container className='flex h-[10dvh]'>
+            <Container className='flex h-[10dvh] justify-start items-center'>
                 <ul className='flex'>
                     {linkList.map((link, index) =>
-                        <li key={index} className='mx-2'><Link href={link.href} className='uppercase text-4xl p-3 font-[700]'>{link.name}</Link></li>
+                        <li key={index} className='mx-2'><Link href={link.href} className='uppercase text-[3rem] p-3 font-[700] tracking-[0.1rem]'>{link.name}</Link></li>
                     )}
                 </ul>
             </Container>
