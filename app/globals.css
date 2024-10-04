@@ -47,10 +47,11 @@ html {
   overflow-x: hidden;
   font-size: calc(100vw / 1920 *10);
   line-height: 1.1;
+  letter-spacing: 0.1rem;
   height: 100%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   html {
     scroll-behavior: auto;
     color: var(--color-white);
@@ -98,3 +99,22 @@ a {
 .scrollbar::-webkit-scrollbar-thumb:hover {
   background: #dbdadd;
 }
+
+.building-list li {
+  position: relative;
+  padding-left: 2rem;
+  font-family: var(--font-playfair);
+  gap: 1rem;
+}
+
+.building-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 1rem;
+  height: 1rem;
+  transform: translateY(-50%);
+  background-color: var(--color-white);
+  border-radius: 50%;
+} 
