@@ -11,7 +11,7 @@
     --color-bg: #0D0D0D;
     --color-white: #ffffff;
     --color-beige: #EBD7B2;
-  } 
+  }
 
   header ul li a {
     font-family: var(--font-spectral);
@@ -81,4 +81,9 @@ a {
   transform: translateY(-50%);
   background-color: var(--color-white);
   border-radius: 50%;
+}
+
+.active .headroom {
+  transform: translate3D(0, 0, 0) !important;
+  transition: none !important;
 }
