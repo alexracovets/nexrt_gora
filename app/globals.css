@@ -87,3 +87,11 @@ a {
   transform: translate3D(0, 0, 0) !important;
   transition: none !important;
 }
+
+.react-transform-wrapper,
+.react-transform-component {
+  width: 100% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

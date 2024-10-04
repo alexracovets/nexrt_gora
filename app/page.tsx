@@ -4,7 +4,7 @@ import { GridMap } from "@/components/shared/GridMap/gridMap";
 
 export default function Home() {
   return (
-    <Container className="max-w-full flex justify-between items-center w-full h-full grow">
+    <Container className="max-w-full flex justify-between items-center w-full h-full grow max-md:p-0">
       <GridMap />
       <AsideHome />
     </Container>
