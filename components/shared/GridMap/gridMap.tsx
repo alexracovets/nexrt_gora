@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
-import GridItem from './GridItem/gridItem'; 
+import GridItem from './GridItem/gridItem';
 
 export const GridMap: React.FC = ({ }) => {
     const [cells, setCells] = useState([]);
@@ -26,9 +26,9 @@ export const GridMap: React.FC = ({ }) => {
     }, []);
 
     return (
-        <div className='flex justify-start items-center grow h-[100%]'>
-            <div className='py-[1rem] pr-[1rem] pl-[0.5rem] bg-regal-green rounded-r-lg'>
-                <div className='flex relative w-[98rem] h-[74.5rem] rounded-r-lg'>
+        <div className='flex justify-start items-start w-[150rem] h-[85dvh] border-y-[1rem] border-r-[1rem] border-white border-solid rounded-r-lg overflow-hidden'>
+            <div className='bg-regal-green h-[100%] overflow-scroll p-[5rem]'>
+                <div className='flex relative w-[194rem] h-[149rem]'>
                     <div className='absolute left-0 top-0 z-10 w-[100%] h-[100%] pointer-events-none'>
                         <Image src="./mask/mask.png"
                             fill={true}

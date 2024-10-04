@@ -11,25 +11,7 @@
     --color-bg: #0D0D0D;
     --color-white: #ffffff;
     --color-beige: #EBD7B2;
-  }
-
-  ::-webkit-scrollbar {
-    width: 12px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: #888;
-    border-radius: 10px;
-    border: 2px solid #fff;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: #555;
-  }
+  } 
 
   header ul li a {
     font-family: var(--font-spectral);
@@ -82,24 +64,6 @@ a {
   }
 }
 
-.scrollbar::-webkit-scrollbar {
-  width: 4px;
-}
-
-.scrollbar::-webkit-scrollbar-track {
-  border-radius: 6px;
-  background: #fff;
-}
-
-.scrollbar::-webkit-scrollbar-thumb {
-  background: #dbdadd;
-  border-radius: 6px;
-}
-
-.scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #dbdadd;
-}
-
 .building-list li {
   position: relative;
   padding-left: 2rem;
@@ -117,4 +81,4 @@ a {
   transform: translateY(-50%);
   background-color: var(--color-white);
   border-radius: 50%;
-} 
+}
