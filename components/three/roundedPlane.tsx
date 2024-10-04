@@ -20,7 +20,7 @@ const RoundedPlane = memo(({ position, color, width, height, grid }: { position:
     ));
     useEffect(() => {
         if (materialRef.current) {
-            materialRef.current.uniforms.u_opacity.value = isGridActive ? 1 : 0.5;
+            materialRef.current.uniforms.u_opacity.value = isGridActive ? 1 : 0.3;
             materialRef.current.uniformsNeedUpdate = true;
             materialRef.current.transparent = true;
             materialRef.current.needsUpdate = true;
@@ -41,7 +41,7 @@ const RoundedPlane = memo(({ position, color, width, height, grid }: { position:
                     u_borderColor: { value: new THREE.Color('#000000') },
                     u_radius: { value: 0.2 },
                     u_borderThickness: { value: 0.05 },
-                    u_opacity: { value: isGridActive ? 1 : 0.5 },
+                    u_opacity: { value: isGridActive ? 1 : 0.3 },
                 }}
                 vertexShader={`
                 varying vec2 vUv;
