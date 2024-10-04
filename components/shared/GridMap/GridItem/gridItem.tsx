@@ -45,7 +45,7 @@ const GridItem = memo(({ height, width, grid }: { height: string, width: string,
             style={{ height, width }}
             onClick={() => setActiveGrids(grid)}
         >
-            <div className={`w-full h-full ${color} ${opacity} outline outline-black outline-[0.1rem] rounded-[0.4rem]`} />
+            <div className={`w-full h-full ${color} ${opacity} border-black border-[0.1rem] rounded-[0.4rem]`} />
         </li>
     );
 });
