@@ -20,7 +20,7 @@ const RoundedPlane = memo(({ position, color, width, height, grid }: { position:
     ));
     useEffect(() => {
         if (materialRef.current) {
-            materialRef.current.uniforms.u_opacity.value = isGridActive ? 1 : 0.1;
+            materialRef.current.uniforms.u_opacity.value = isGridActive ? 1 : 0.5;
             materialRef.current.uniformsNeedUpdate = true;
             materialRef.current.transparent = true;
             materialRef.current.needsUpdate = true;
@@ -33,24 +33,24 @@ const RoundedPlane = memo(({ position, color, width, height, grid }: { position:
     }, [isGridActive])
     return (
         <mesh position={position} matrixWorldNeedsUpdate matrixAutoUpdate onClick={() => setActiveGrids(grid)}>
-        <planeGeometry args={[width, height, 32, 32]} />
-        <shaderMaterial
-            ref={materialRef}
-            uniforms={{
-                u_color: { value: new THREE.Color(color) },
-                u_borderColor: { value: new THREE.Color('#000000') },
-                u_radius: { value: 0.2 },
-                u_borderThickness: { value: 0.05 },
-                u_opacity: { value: isGridActive ? 1 : 0.1 },
-            }}
-            vertexShader={`
+            <planeGeometry args={[width, height, 32, 32]} />
+            <shaderMaterial
+                ref={materialRef}
+                uniforms={{
+                    u_color: { value: new THREE.Color(color) },
+                    u_borderColor: { value: new THREE.Color('#000000') },
+                    u_radius: { value: 0.2 },
+                    u_borderThickness: { value: 0.05 },
+                    u_opacity: { value: isGridActive ? 1 : 0.5 },
+                }}
+                vertexShader={`
                 varying vec2 vUv;
                 void main() {
                     vUv = uv;
                     gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
                 }
             `}
-            fragmentShader={`
+                fragmentShader={`
                 uniform vec3 u_color;
                 uniform vec3 u_borderColor;
                 uniform float u_radius;
@@ -83,12 +83,12 @@ const RoundedPlane = memo(({ position, color, width, height, grid }: { position:
                 gl_FragColor = vec4(color, u_opacity * (1.0 - fillAlpha));
                 }
             `}
-            transparent={true} // Активуємо прозорість
-            depthWrite={false} // Вимикаємо запис глибини, що допоможе з рендерингом прозорості
-            blending={THREE.NormalBlending} // Нормальне змішування альфа-каналу
-            alphaTest={0.5} // Додаємо тест альфа-каналу
-        />
-    </mesh>
+                transparent={true} // Активуємо прозорість
+                depthWrite={false} // Вимикаємо запис глибини, що допоможе з рендерингом прозорості
+                blending={THREE.NormalBlending} // Нормальне змішування альфа-каналу
+                alphaTest={0.5} // Додаємо тест альфа-каналу
+            />
+        </mesh>
     );
 });
 
