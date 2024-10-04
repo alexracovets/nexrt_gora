@@ -29,12 +29,12 @@ export const Header: React.FC = ({ }) => {
             href: '/work'
         },
         {
-            name: 'Подарунки',
-            href: '/gifts'
+            name: 'Локації',
+            href: '/location'
         },
         {
-            name: 'О нас',
-            href: '/about'
+            name: 'Контакти',
+            href: '/contacts'
         }
     ]
     const headroomRef = useRef<HeadroomWithUnpin | null>(null);

@@ -1,6 +1,6 @@
 import { Container } from "@/components/shared/container";
 
-export default function Gifts() {
+export default function Contacts() {
   return (
     <Container className="w-full grow">
 
