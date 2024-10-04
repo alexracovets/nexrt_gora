@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils';
 
 interface HeadroomWithUnpin extends Headroom {
     unpin: () => void;
+    pin: () => void;
 }
 
 export const Header: React.FC = ({ }) => {
@@ -41,6 +42,8 @@ export const Header: React.FC = ({ }) => {
     useEffect(() => {
         if (isOpen && headroomRef.current) {
             headroomRef.current.unpin();
+        } else if (!isOpen && headroomRef.current) {
+            headroomRef.current.pin();
         }
     }, [isOpen]);
 
