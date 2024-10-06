@@ -8,8 +8,6 @@ import { OrbitControls as OrbitControlsType } from 'three-stdlib';
 
 export const Camera: React.FC = () => {
     const controlsRef = useRef<OrbitControlsType | null>(null); // Specify the correct type here
-    const maxZoom = 5;
-    const maxX = 2;
 
     const minPan = new THREE.Vector3(-2, 1, -2);
     const maxPan = new THREE.Vector3(2, 5, 2);
