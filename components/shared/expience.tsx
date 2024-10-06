@@ -2,8 +2,9 @@
 
 import { Canvas } from '@react-three/fiber';
 import React, { useEffect, useState } from 'react';
-import { OrbitControls, Plane } from '@react-three/drei';
+import { Plane } from '@react-three/drei';
 import RoundedPlane from '../three/roundedPlane';
+import { Camera } from '../three/camera';
 
 interface CellData {
     x: number;
@@ -37,39 +38,42 @@ export const Expience: React.FC = () => {
                 gl={{ antialias: false }}
                 frameloop="demand"
             >
+                <color attach="background" args={["#4caf50"]} />
                 {/* Додаємо базове освітлення */}
                 <ambientLight intensity={0.5} />
                 <directionalLight position={[5, 5, 5]} intensity={0.5} />
-
-                <OrbitControls enableRotate={false} />
-
-                {/* Плоска поверхня */}
-                <Plane args={[46 /scale, 35 /scale]} position={[0, 0, 0]} />
-
-                {/* Відображення елементів на основі даних */}
-                <mesh position={[-22.5 /scale, -17 /scale, 0]}>
-                    {cells.map((item, idx) => {
-                        return (
-                            <RoundedPlane
-                                key={idx}
-                                position={[item.x /scale, item.y /scale, 0]}
-                                width={1 /scale}
-                                height={1 /scale}
-                                grid={item}
-                                color={
-                                    item.price === 100
-                                        ? "#4caf50"
-                                        : item.price === 200
-                                            ? "#FFEB3B"
-                                            : item.price === 300
-                                                ? "#E91E63"
-                                                : item.price === 500
-                                                    ? "#9C27B0"
-                                                    : "white"
-                                }
-                            />
-                        );
-                    })}
+                <Camera />
+                <mesh rotation={[-Math.PI / 2, 0, 0]}>
+                    {/* Плоска поверхня */}
+                    <Plane args={[46 / scale, 35 / scale]} position={[0, 0, -0.02]}>
+                        <meshBasicMaterial color={"#4caf50"} />
+                    </Plane>
+                    <Plane args={[46 / scale, 35 / scale]} position={[0, 0, -0.01]} />
+                    {/* Відображення елементів на основі даних */}
+                    <mesh position={[-22.5 / scale, -17 / scale, 0]}>
+                        {cells.map((item, idx) => {
+                            return (
+                                <RoundedPlane
+                                    key={idx}
+                                    position={[item.x / scale, item.y / scale, 0]}
+                                    width={1 / scale}
+                                    height={1 / scale}
+                                    grid={item}
+                                    color={
+                                        item.price === 100
+                                            ? "#4caf50"
+                                            : item.price === 200
+                                                ? "#FFEB3B"
+                                                : item.price === 300
+                                                    ? "#E91E63"
+                                                    : item.price === 500
+                                                        ? "#9C27B0"
+                                                        : "white"
+                                    }
+                                />
+                            );
+                        })}
+                    </mesh>
                 </mesh>
             </Canvas>
         </div>
