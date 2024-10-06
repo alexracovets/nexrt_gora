@@ -33,13 +33,13 @@ const RoundedPlane = memo(({ position, color, width, height, grid }: { position:
     }, [isGridActive])
     return (
         <mesh position={position} matrixWorldNeedsUpdate matrixAutoUpdate onClick={() => setActiveGrids(grid)}>
-            <planeGeometry args={[width, height, 32, 32]} />
+            <planeGeometry args={[width, height, 1, 1]} />
             <shaderMaterial
                 ref={materialRef}
                 uniforms={{
                     u_color: { value: new THREE.Color(color) },
-                    u_borderColor: { value: new THREE.Color('#000000') },
-                    u_radius: { value: 0.2 },
+                    u_borderColor: { value: new THREE.Color('#808080') },
+                    u_radius: { value: 0.15 },
                     u_borderThickness: { value: 0.05 },
                     u_opacity: { value: isGridActive ? 1 : 0.3 },
                 }}
@@ -84,7 +84,7 @@ const RoundedPlane = memo(({ position, color, width, height, grid }: { position:
                 }
             `}
                 transparent={true} // Активуємо прозорість
-                depthWrite={false} // Вимикаємо запис глибини, що допоможе з рендерингом прозорості
+                depthWrite={true} // Вимикаємо запис глибини, що допоможе з рендерингом прозорості
                 blending={THREE.NormalBlending} // Нормальне змішування альфа-каналу
                 alphaTest={0.5} // Додаємо тест альфа-каналу
             />

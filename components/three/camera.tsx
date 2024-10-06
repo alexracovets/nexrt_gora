@@ -2,33 +2,28 @@
 
 import React, { useRef } from 'react';
 import { MapControls } from '@react-three/drei';
-import { useFrame } from '@react-three/fiber';
-import * as THREE from 'three';
 import { MapControls as MapControlsType } from 'three-stdlib';
 
 export const Camera: React.FC = () => {
     const controlsRef = useRef<MapControlsType | null>(null);
-    // const maxZoom = 5;
-    // const maxX = 2;
+    const maxPan = 2;
+    const maxZoom =5.5;
 
-    const minPan = new THREE.Vector3(-2, 1, -2);
-    const maxPan = new THREE.Vector3(2, 5, 2);
-    useFrame(() => {
+    const checkPosition = () => {
         if (controlsRef.current) {
             const target = controlsRef.current.target;
+            const position = controlsRef.current.object.position;
 
             // Обмежуємо по осі X
-            target.x = Math.max(minPan.x, Math.min(maxPan.x, target.x));
-
-            // Обмежуємо по осі Y
-            target.y = Math.max(minPan.y, Math.min(maxPan.y, target.y));
+            target.z = Math.max(-maxPan, Math.min(maxPan, target.z));
+            target.x = Math.max(-maxPan, Math.min(maxPan, target.x));
 
             // Можемо також додати обмеження для камери, якщо це потрібно
-            const position = controlsRef.current.object.position;
-            position.x = Math.max(minPan.x, Math.min(maxPan.x, position.x));
-            position.y = Math.max(minPan.y, Math.min(maxPan.y, position.y));
+            position.x = Math.max(-maxPan, Math.min(maxPan, position.x));
+            position.z = Math.max(-maxPan, Math.min(maxPan, position.z));
         }
-    });
+    }
+
     return (
         <MapControls
             ref={controlsRef}
@@ -37,6 +32,9 @@ export const Camera: React.FC = () => {
             screenSpacePanning={false}
             maxPolarAngle={-Math.PI / 2}
             minPolarAngle={-Math.PI / 2}
+            maxDistance={maxZoom}
+            minDistance={1}
+            onChange={checkPosition}
         />
     );
 };
