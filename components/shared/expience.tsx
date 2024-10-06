@@ -38,17 +38,11 @@ export const Expience: React.FC = () => {
                 gl={{ antialias: false }}
                 frameloop="demand"
             >
-                <color attach="background" args={["#4caf50"]} />
-                {/* Додаємо базове освітлення */}
                 <ambientLight intensity={0.5} />
                 <directionalLight position={[5, 5, 5]} intensity={0.5} />
                 <Camera />
                 <mesh rotation={[-Math.PI / 2, 0, 0]}>
-                    {/* Плоска поверхня */}
-                    <Plane args={[46 / scale, 35 / scale]} position={[0, 0, -0.02]}>
-                        <meshBasicMaterial color={"#4caf50"} />
-                    </Plane>
-                    <Plane args={[46 / scale, 35 / scale]} position={[0, 0, -0.01]} />
+                    <Plane args={[48 / scale, 37 / scale]} position={[0, 0, -0.01]} />
                     {/* Відображення елементів на основі даних */}
                     <mesh position={[-22.5 / scale, -17 / scale, 0]}>
                         {cells.map((item, idx) => {
