@@ -1,23 +1,39 @@
 'use client';
 
 import React, { useRef, memo, useCallback, useEffect } from 'react';
-import * as THREE from 'three';
+
 import useStoreGrid from '@/store/useStoreGrid';
+import { Color, NormalBlending, ShaderMaterial } from 'three';
 
 interface Grid {
     x: number;
     y: number;
     price: number;
-    // isSelected: boolean;
 }
 
-const RoundedPlane = memo(({ position, color, width, height, grid }: { position: [number, number, number], color: string, width: number, height: number, grid: Grid }) => {
+const RoundedPlane = memo(({ position, width, height, grid }: { position: [number, number, number], width: number, height: number, grid: Grid }) => {
     const setActiveGrids = useStoreGrid(state => state.setActiveGrids);
-    const materialRef = useRef<THREE.ShaderMaterial | null>(null);
+    const materialRef = useRef<ShaderMaterial | null>(null);
     const isGridActive = useStoreGrid(useCallback(
         (state) => state.activeGrids.some((activeGrid: Grid) => activeGrid.x === grid.x && activeGrid.y === grid.y),
         [grid.x, grid.y]
     ));
+
+    const getColorByPrice = (price: number) => {
+        switch (price) {
+            case 100:
+                return '#4CAF50';
+            case 200:
+                return '#FFEB3B';
+            case 300:
+                return '#E91E63';
+            case 500:
+                return '#9C27B0';
+            default:
+                return '#FFFFFF'; // Білий за замовчуванням
+        }
+    };
+
     useEffect(() => {
         if (materialRef.current) {
             materialRef.current.uniforms.u_opacity.value = isGridActive ? 1 : 0.3;
@@ -31,14 +47,15 @@ const RoundedPlane = memo(({ position, color, width, height, grid }: { position:
             materialRef.current.visible = true;
         }
     }, [isGridActive])
+
     return (
         <mesh position={position} matrixWorldNeedsUpdate matrixAutoUpdate onClick={() => setActiveGrids(grid)}>
             <planeGeometry args={[width, height, 1, 1]} />
             <shaderMaterial
                 ref={materialRef}
                 uniforms={{
-                    u_color: { value: new THREE.Color(color) },
-                    u_borderColor: { value: new THREE.Color('#808080') },
+                    u_color: { value: new Color(getColorByPrice(grid.price)) },
+                    u_borderColor: { value: new Color('#808080') },
                     u_radius: { value: 0.15 },
                     u_borderThickness: { value: 0.05 },
                     u_opacity: { value: isGridActive ? 1 : 0.3 },
@@ -85,7 +102,7 @@ const RoundedPlane = memo(({ position, color, width, height, grid }: { position:
             `}
                 transparent={true} // Активуємо прозорість
                 depthWrite={true} // Вимикаємо запис глибини, що допоможе з рендерингом прозорості
-                blending={THREE.NormalBlending} // Нормальне змішування альфа-каналу
+                blending={NormalBlending} // Нормальне змішування альфа-каналу
                 alphaTest={0.5} // Додаємо тест альфа-каналу
             />
         </mesh>

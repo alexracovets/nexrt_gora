@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { Plane } from '@react-three/drei';
 import RoundedPlane from '../three/roundedPlane';
 import { Camera } from '../three/camera';
+import { Shape } from '../three/shape';
 
 interface CellData {
     x: number;
@@ -42,7 +43,8 @@ export const Expience: React.FC = () => {
                 <directionalLight position={[5, 5, 5]} intensity={0.5} />
                 <Camera />
                 <mesh rotation={[-Math.PI / 2, 0, 0]}>
-                    <Plane args={[48 / scale, 37 / scale]} position={[0, 0, -0.01]} />
+                    <Plane args={[48 / scale, 37 / scale]} position={[0, 0, -0.001]} />
+                    <Shape />
                     {/* Відображення елементів на основі даних */}
                     <mesh position={[-22.5 / scale, -17 / scale, 0]}>
                         {cells.map((item, idx) => {
@@ -53,17 +55,6 @@ export const Expience: React.FC = () => {
                                     width={1 / scale}
                                     height={1 / scale}
                                     grid={item}
-                                    color={
-                                        item.price === 100
-                                            ? "#4caf50"
-                                            : item.price === 200
-                                                ? "#FFEB3B"
-                                                : item.price === 300
-                                                    ? "#E91E63"
-                                                    : item.price === 500
-                                                        ? "#9C27B0"
-                                                        : "white"
-                                    }
                                 />
                             );
                         })}
