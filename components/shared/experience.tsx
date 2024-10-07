@@ -4,12 +4,6 @@ import React, { Suspense, lazy } from 'react';
 import { Loader } from './loader';
 const CanvasExperience = lazy(() => import('./canvasExperience'));
 
-interface CellData {
-    x: number;
-    y: number;
-    price: number;
-}
-
 export const Experience: React.FC = () => {
 
     return (
