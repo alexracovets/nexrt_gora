@@ -1,3 +1,5 @@
+"use client"
+
 import { AsideHome } from "@/components/shared/asideHome";
 import { CarouselOne } from "@/components/shared/carouselOne";
 import { Container } from "@/components/shared/container";
@@ -6,6 +8,14 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 export default function Project() {
+
+  const scrollToMap = () => {
+    const mapSection = document.getElementById('map');
+    if (mapSection) {
+      mapSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <>
       <section className="max-w-full grow">
@@ -62,7 +72,7 @@ export default function Project() {
           </div>
         </Container>
       </section>
-      <section>
+      <section id='map'>
         <Container className="py-[10rem] max-w-full flex justify-between items-center w-full h-[85dvh] h-full grow max-md:p-0">
           <Experience />
           <AsideHome />
@@ -76,7 +86,7 @@ export default function Project() {
           <div className="w-[150rem] mx-auto mb-[10rem] max-md:w-full">
             <CarouselOne />
           </div>
-          <Button>
+          <Button onClick={scrollToMap}>
             Стати Опікуном
           </Button>
         </Container>
@@ -86,7 +96,7 @@ export default function Project() {
           <h2 className='text-[7rem] text-center text-regal-beige font-spectral font-[700] uppercase mb-[12rem] max-md:mb-[3rem] max-md:text-[3rem]'>
             Встигни потрапити до першого тому ГОРИ на Афоні
           </h2>
-          <div className="text-[4rem] text-center mb-[10rem] font-spectral font-[500] max-w-[140rem] mx-auto">
+          <div className="text-[4rem] text-center mb-[10rem] font-spectral font-[500] max-w-[140rem] mx-auto max-md:text-[2rem]">
             Ви станете тією людиною, хто творить історію – вперше з 18 століття відбудовується
             осередок українства на Афоні. Відкрий свою сторінку історії!
           </div>
@@ -96,7 +106,8 @@ export default function Project() {
               fill
               alt="Books" />
           </div>
-          <Button variant='default' size='default'>
+
+          <Button variant='default' size='default' onClick={scrollToMap} >
             Стати Опікуном
           </Button>
         </Container>
