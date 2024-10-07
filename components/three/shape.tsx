@@ -22,23 +22,17 @@ export const Shape: React.FC = () => {
     };
 
     useEffect(() => {
-        if (svgRef.current && planeRef.current) {
-            // Отримуємо розміри Plane
+        if (svgRef.current && planeRef.current && paths.length > 0) {
             const planeSize = getSizes(planeRef.current);
-
-            // Обчислюємо Box3 для SVG і отримуємо його розміри
             const boxSvg = new Box3().setFromObject(svgRef.current);
             const svgSize = new Vector3();
             boxSvg.getSize(svgSize);
 
-            // Обчислюємо масштабування для відповідності SVG розмірам Plane
             const scaleX = planeSize.x / svgSize.x;
             const scaleY = planeSize.z / svgSize.z;
 
-            // Встановлюємо масштабування для SVG
             setSvgScale(scaleX);
 
-            // Обчислюємо центр Plane і SVG для вирівнювання позиції SVG
             const svgCenter = new Vector3();
             boxSvg.getCenter(svgCenter);
 
@@ -46,24 +40,26 @@ export const Shape: React.FC = () => {
             const boxPlane = new Box3().setFromObject(planeRef.current);
             boxPlane.getCenter(planeCenter);
 
-            // Обчислюємо зміщення для вирівнювання SVG по центру Plane
             const offsetX = planeCenter.x - svgCenter.x * scaleX;
             const offsetY = planeCenter.z - svgCenter.z * scaleY;
 
             setSvgPosition(new Vector3(offsetX, -offsetY, 0));
-        } 
-    }, [svgRef, planeRef]);
+        }
+    }, [paths]);
+
     return (
         <mesh position={[0, 0, 0.001]}>
             <Plane ref={planeRef} args={[46 / scale, 35 / scale]} visible={false} position={[0, 0, 0]} />
-            <group ref={svgRef} scale={svgScale} position={svgPosition} rotation={[Math.PI, 0, 0]}>
-                {paths.map((path, index) => (
-                    <mesh key={index}>
-                        <shapeGeometry args={[path.toShapes(true)]} />
-                        <meshBasicMaterial color={'red'} side={DoubleSide} />
-                    </mesh>
-                ))}
-            </group>
+            {paths.length > 0 && (
+                <group ref={svgRef} scale={svgScale} position={svgPosition} rotation={[Math.PI, 0, 0]}>
+                    {paths.map((path, index) => (
+                        <mesh key={index}>
+                            <shapeGeometry args={[path.toShapes(true)]} />
+                            <meshBasicMaterial color={path.color} side={DoubleSide} />
+                        </mesh>
+                    ))}
+                </group>
+            )}
         </mesh>
     );
 };
