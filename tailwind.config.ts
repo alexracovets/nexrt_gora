@@ -28,7 +28,7 @@ const config: Config = {
 				'regal-bgLogo': '#00000080'
 			},
 			boxShadow: {
-				'me-xl': '0 0 2rem 1rem rgba(36, 118, 22, 0.7)',
+				'me-xl': '0 0 2rem 1rem rgba(36, 118, 22, 0.5)',
 			}
 		}
 	},
