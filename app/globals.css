@@ -26,11 +26,9 @@
 html {
   scroll-behavior: smooth;
   background-color: var(--color-bg);
-  overflow-x: hidden;
   font-size: calc(100vw / 1920 *10);
   line-height: 1.1;
   letter-spacing: 0.1rem;
-  height: 100%;
 }
 
 @media (max-width: 767px) {
@@ -43,8 +41,6 @@ html {
 
 body {
   background: transparent !important;
-  min-height: 100dvh;
-  height: 100%;
   user-select: none;
 }
 
@@ -95,4 +91,9 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.quote::before,
+.quote::after {
+  content: '"'!important;
 }

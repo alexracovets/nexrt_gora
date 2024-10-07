@@ -21,10 +21,11 @@ const config: Config = {
 				'regal-pink': '#E91E63',
 				'regal-violet': '#9C27B0',
 				'regal-white': '#F8F8FF',
-				'regal-black': '#000',
+				'regal-black': '#000000',
 				'regal-beige': '#EBD7B2',
 				'regal-darkGray': '#333333',
-				'regal-lightGray': '#E5E7EB'
+				'regal-lightGray': '#E5E7EB',
+				'regal-bgLogo': '#00000080'
 			},
 		}
 	},

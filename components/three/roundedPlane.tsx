@@ -3,7 +3,7 @@
 import React, { useRef, memo, useCallback, useEffect } from 'react';
 
 import useStoreGrid from '@/store/useStoreGrid';
-import { Color, NormalBlending, ShaderMaterial } from 'three';
+import { Color, ShaderMaterial } from 'three';
 
 interface Grid {
     x: number;
@@ -22,15 +22,15 @@ const RoundedPlane = memo(({ position, width, height, grid }: { position: [numbe
     const getColorByPrice = (price: number) => {
         switch (price) {
             case 100:
-                return '#4CAF50';
+                return new Color('#4CAF50')
             case 200:
-                return '#FFEB3B';
+                return new Color('#FFEB3B')
             case 300:
-                return '#E91E63';
+                return new Color('#E91E63')
             case 500:
-                return '#9C27B0';
+                return new Color('#9C27B0')
             default:
-                return '#FFFFFF'; // Білий за замовчуванням
+                return new Color('#FFFFFF')
         }
     };
 
@@ -54,7 +54,7 @@ const RoundedPlane = memo(({ position, width, height, grid }: { position: [numbe
             <shaderMaterial
                 ref={materialRef}
                 uniforms={{
-                    u_color: { value: new Color(getColorByPrice(grid.price)) },
+                    u_color: { value: getColorByPrice(grid.price) },
                     u_borderColor: { value: new Color('#808080') },
                     u_radius: { value: 0.15 },
                     u_borderThickness: { value: 0.05 },
@@ -100,10 +100,8 @@ const RoundedPlane = memo(({ position, width, height, grid }: { position: [numbe
                 gl_FragColor = vec4(color, u_opacity * (1.0 - fillAlpha));
                 }
             `}
-                transparent={true} // Активуємо прозорість
-                depthWrite={true} // Вимикаємо запис глибини, що допоможе з рендерингом прозорості
-                blending={NormalBlending} // Нормальне змішування альфа-каналу
-                alphaTest={0.5} // Додаємо тест альфа-каналу
+                transparent={true}
+                alphaTest={0.5}
             />
         </mesh>
     );

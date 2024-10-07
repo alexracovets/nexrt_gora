@@ -6,6 +6,7 @@ import { Plane } from '@react-three/drei';
 import RoundedPlane from '../three/roundedPlane';
 import { Camera } from '../three/camera';
 import { Shape } from '../three/shape';
+import { NoToneMapping } from 'three';
 
 interface CellData {
     x: number;
@@ -26,7 +27,7 @@ const CanvasExperience: React.FC = () => {
                 return response.json();
             })
             .then((json) => {
-                setCells(json); 
+                setCells(json);
             })
             .catch((error) => {
                 console.error('There was a problem with the fetch operation:', error);
@@ -35,7 +36,7 @@ const CanvasExperience: React.FC = () => {
 
     return (
         <Canvas
-            gl={{ antialias: false }}
+            gl={{ antialias: true, toneMapping: NoToneMapping }}
             frameloop="demand"
         >
             <ambientLight intensity={0.5} />
