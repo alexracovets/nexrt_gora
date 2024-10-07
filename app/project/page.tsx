@@ -2,6 +2,7 @@ import { AsideHome } from "@/components/shared/asideHome";
 import { CarouselOne } from "@/components/shared/carouselOne";
 import { Container } from "@/components/shared/container";
 import { Experience } from "@/components/shared/experience";
+import { Button } from "@/components/ui/button";
 
 export default function Project() {
   return (
@@ -45,20 +46,38 @@ export default function Project() {
         </Container>
       </section>
       <section>
-        <Container className=" py-[10rem] max-w-full flex justify-between items-center w-full h-[85dvh] h-full grow max-md:p-0">
+        <Container className="py-[10rem] max-w-full flex justify-between items-center w-full h-[85dvh] h-full grow max-md:p-0">
           <Experience />
           <AsideHome />
         </Container>
       </section>
       <section>
         <Container className="py-[10rem] max-md:py-[5rem]">
-          <h2 className='text-[7rem] text-center text-regal-beige font-spectral font-[700] uppercase mb-[4rem] max-md:mb-[3rem] max-md:text-[3rem]'>
+          <h2 className='text-[7rem] text-center text-regal-beige font-spectral font-[700] uppercase mb-[12rem] max-md:mb-[3rem] max-md:text-[3rem]'>
             Як це працює
           </h2>
-          <CarouselOne />
+          <div className="w-[150rem] mx-auto mb-[10rem]">
+            <CarouselOne />
+          </div>
+          <Button>
+            Стати Опікуном
+          </Button>
         </Container>
       </section>
-
+      <section>
+        <Container className="py-[10rem] max-md:py-[5rem]">
+          <h2 className='text-[7rem] text-center text-regal-beige font-spectral font-[700] uppercase mb-[12rem] max-md:mb-[3rem] max-md:text-[3rem]'>
+            Встигни потрапити до першого тому ГОРИ на Афоні
+          </h2>
+          <div>
+            Ви станете тією людиною, хто творить історію – вперше з 18 століття відбудовується
+            осередок українства на Афоні. Відкрий свою сторінку історії!
+          </div>
+          <Button>
+            Стати Опікуном
+          </Button>
+        </Container>
+      </section>
     </>
   );
 }

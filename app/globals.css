@@ -95,5 +95,35 @@ a {
 
 .quote::before,
 .quote::after {
-  content: '"'!important;
+  content: '"' !important;
+}
+
+.caouresel_gold_item::before,
+.caouresel_gold_item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 9.614rem;
+  background-size: 9.614rem;
+  opacity: 0.3;
+}
+
+.caouresel_gold_item::before {
+  top: -3rem;
+  background-position-x: 2rem;
+  background-position-y: 3.1rem;
+}
+
+.caouresel_gold_item::after {
+  bottom: -3rem;
+  background-position-x: 2rem;
+  background-position-y: 3.1rem;
+  transform: rotate(180deg);
+}
+
+.caouresel_gold_arrow svg {
+  width: 3rem;
+  height: 3rem;
+  color: var(--color-beige);
 }

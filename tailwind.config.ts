@@ -16,7 +16,7 @@ const config: Config = {
 				'playfair': ['Playfair Display', 'serif']
 			},
 			colors: {
-				'regal-green': '#4caf50',
+				'regal-green': '#247616',
 				'regal-yellow': '#FFEB3B',
 				'regal-pink': '#E91E63',
 				'regal-violet': '#9C27B0',
@@ -27,6 +27,9 @@ const config: Config = {
 				'regal-lightGray': '#E5E7EB',
 				'regal-bgLogo': '#00000080'
 			},
+			boxShadow: {
+				'me-xl': '0 0 2rem 1rem rgba(36, 118, 22, 0.7)',
+			}
 		}
 	},
 	plugins: [

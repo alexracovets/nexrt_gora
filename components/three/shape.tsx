@@ -30,6 +30,7 @@ export const Shape: React.FC = () => {
 
             const scaleX = planeSize.x / svgSize.x;
             const scaleY = planeSize.z / svgSize.z;
+            const scaleZ = planeSize.y / svgSize.y;
 
             setSvgScale(scaleX);
 
@@ -42,8 +43,8 @@ export const Shape: React.FC = () => {
 
             const offsetX = planeCenter.x - svgCenter.x * scaleX;
             const offsetY = planeCenter.z - svgCenter.z * scaleY;
-
-            setSvgPosition(new Vector3(offsetX, -offsetY, 0));
+            const offsetZ = planeCenter.y - svgCenter.y * scaleZ;
+            setSvgPosition(new Vector3(offsetX, offsetY === 0 ? offsetZ : -offsetY, 0));
         }
     }, [paths]);
 
