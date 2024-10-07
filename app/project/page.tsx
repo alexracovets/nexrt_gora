@@ -73,7 +73,7 @@ export default function Project() {
             Ви станете тією людиною, хто творить історію – вперше з 18 століття відбудовується
             осередок українства на Афоні. Відкрий свою сторінку історії!
           </div>
-          <Button variant='default'>
+          <Button variant='default' size='default'>
             Стати Опікуном
           </Button>
         </Container>
