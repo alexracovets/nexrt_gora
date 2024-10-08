@@ -43,13 +43,6 @@ export const AsideHome: React.FC = ({ }) => {
             </p>
             <Separator className='my-[4rem] border-[1px]' />
             <div className="text-center uppercase text-[3rem] font-[700] font-spectral mb-[2rem]">
-                Розрахунок вартості:
-            </div>
-            <p className='text-center text-[4rem] font-roboto font-[700] text-regal-darkGray'>
-                {priceTotal}{' $'}
-            </p>
-            <Separator className='my-[4rem] border-[1px]' />
-            <div className="text-center uppercase text-[3rem] font-[700] font-spectral mb-[2rem]">
                 Обрані локації:
             </div>
             <div>
@@ -86,6 +79,13 @@ export const AsideHome: React.FC = ({ }) => {
                     );
                 })}
             </div>
+            <Separator className='my-[4rem] border-[1px]' />
+            <div className="text-center uppercase text-[3rem] font-[700] font-spectral mb-[2rem]">
+                Розрахунок вартості:
+            </div>
+            <p className='text-center text-[4rem] font-roboto font-[700] text-regal-darkGray'>
+                {priceTotal}{' $'}
+            </p>
         </div>
     );
 };
