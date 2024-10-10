@@ -1,5 +1,5 @@
 import { AsideHome } from "@/components/shared/asideHome";
-import ContactForm from "@/components/shared/contactForm";
+import { ContactForm } from "@/components/shared/contactForm";
 import { Container } from "@/components/shared/container";
 import { Experience } from "@/components/shared/experience";
 

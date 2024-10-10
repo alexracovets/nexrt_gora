@@ -51,7 +51,8 @@ footer {
 }
 
 li,
-a {
+a,
+button {
   display: block;
 }
 
@@ -128,6 +129,6 @@ a {
   color: var(--color-beige);
 }
 
-body{ 
+body {
   width: 100%;
 }

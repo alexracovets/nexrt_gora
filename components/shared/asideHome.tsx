@@ -2,17 +2,18 @@
 
 import { Separator } from '@radix-ui/react-separator';
 import React, { useEffect, useState } from 'react';
-import useStoreGrid from '@/store/useStoreGrid';
 import { cn } from '@/lib/utils';
 import { X } from 'lucide-react';
 
-interface GridItem {
-    price: number;
-    count: number;
-}
+import { Button } from '../ui/button';
+import useForm from '@/store/useForm';
+import useStoreGrid from '@/store/useStoreGrid';
+
+interface GridItem { price: number; count: number; }
 
 export const AsideHome: React.FC = ({ }) => {
     const activeGrids = useStoreGrid(state => state.activeGrids);
+    const setIsModal = useForm(state => state.setIsModal);
     const [priceTotal, setPriceTotal] = useState(0);
     const [sections, setSections] = useState<{ price: number, count: number }[]>([]);
 
@@ -22,6 +23,7 @@ export const AsideHome: React.FC = ({ }) => {
         activeGrids.forEach((item: GridItem) => {
             newTotalPrice += item.price;
             const existingSection = newSections.find(s => s.price === item.price);
+
             if (existingSection) {
                 existingSection.count += 1;
             } else {
@@ -34,16 +36,10 @@ export const AsideHome: React.FC = ({ }) => {
     }, [activeGrids]);
 
     return (
-        <div defaultValue="account" className="h-[100%] h-[85dvh] overflow-y-auto w-[40rem] bg-white rounded-l-lg text-regal-black py-[4rem] px-[2rem] max-md:hidden">
+        <div defaultValue="account" className="h-[100%] h-[85dvh] overflow-y-auto w-[45rem] bg-white rounded-l-lg text-regal-black py-[2rem] px-[2rem] max-md:hidden">
+            <Separator className='my-[2rem] border-[1px]' />
             <div className="text-center uppercase text-[3rem] font-[700] font-spectral mb-[2rem]">
-                Залучитися до проекту
-            </div>
-            <p className='text-center text-[2rem]'>
-                Оберіть зацікавлені локації на мапі, щоб стати міценатом нашої Кефалії
-            </p>
-            <Separator className='my-[4rem] border-[1px]' />
-            <div className="text-center uppercase text-[3rem] font-[700] font-spectral mb-[2rem]">
-                Обрані локації:
+                Обрано:
             </div>
             <div>
                 {sections.map((section: GridItem) => {
@@ -61,12 +57,11 @@ export const AsideHome: React.FC = ({ }) => {
                                 return 'bg-regal-white';
                         }
                     }
-
                     return (
-                        <div key={section.price} className="flex items-center justify-between mb-[1rem] border-[2px] border-regal-lightGray p-[1rem] rounded-[1rem]">
+                        <div key={section.price} className="flex items-center justify-between mb-[1rem] border-[2px] border-regal-lightGray p-[0.5rem] rounded-[1rem]">
                             <div
                                 className={
-                                    cn('flex justify-center items-center w-[10rem] h-[10rem] bg-gray-300 text-center rounded-lg text-[3rem] font-playfair font-[700] text-regal-darkGray', checkColor())
+                                    cn('flex justify-center items-center w-[7rem] h-[7rem] bg-gray-300 text-center rounded-lg text-[2rem]  tracking-tight font-[700] text-regal-darkGray', checkColor())
                                 }
                             >
                                 {section.price + ' $'}
@@ -79,13 +74,14 @@ export const AsideHome: React.FC = ({ }) => {
                     );
                 })}
             </div>
-            <Separator className='my-[4rem] border-[1px]' />
+            <Separator className='my-[2rem] border-[1px]' />
             <div className="text-center uppercase text-[3rem] font-[700] font-spectral mb-[2rem]">
-                Розрахунок вартості:
+                Вартість:
             </div>
-            <p className='text-center text-[4rem] font-roboto font-[700] text-regal-darkGray'>
+            <p className='text-center text-[4rem] font-roboto font-[700] text-regal-darkGray mb-[3rem]'>
                 {priceTotal}{' $'}
             </p>
+            <Button className='text-[2.5rem] px-[2rem] py-[1.5rem]' onClick={() => setIsModal(true)}>Зробити внесок</Button>
         </div>
     );
 };

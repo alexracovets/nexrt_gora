@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useRef, memo, useCallback, useEffect } from 'react';
+import { Color, ShaderMaterial } from 'three';
 
 import useStoreGrid from '@/store/useStoreGrid';
-import { Color, ShaderMaterial } from 'three';
 
 interface Grid {
     x: number;

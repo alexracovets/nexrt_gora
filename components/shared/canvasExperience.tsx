@@ -43,7 +43,7 @@ const CanvasExperience: React.FC = () => {
             <directionalLight position={[5, 5, 5]} intensity={0.5} />
             <Camera />
             <mesh rotation={[-Math.PI / 2, 0, 0]}>
-                <Plane args={[48 / scale, 37 / scale]} position={[0, 0, -0.001]} />
+                <Plane args={[46 / scale, 35 / scale]} position={[0, 0, -0.001]} />
                 <Shape />
                 <mesh position={[-22.5 / scale, -17 / scale, 0]}>
                     {cells.map((item, idx) => (

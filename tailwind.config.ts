@@ -29,6 +29,7 @@ const config: Config = {
 			},
 			boxShadow: {
 				'me-xl': '0 0 2rem 1rem rgba(36, 118, 22, 0.5)',
+				'form': '0 0 2rem #9b9b9b9a'
 			}
 		}
 	},
